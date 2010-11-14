@@ -16,8 +16,8 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-class   ErebotModule_AutoJoin
-extends ErebotModuleBase
+class   Erebot_Module_AutoJoin
+extends Erebot_Module_Base
 {
     public function reload($flags)
     {
@@ -25,14 +25,14 @@ extends ErebotModuleBase
             return;
 
         if ($flags & self::RELOAD_HANDLERS) {
-            $handler = new ErebotEventHandler(
+            $handler = new Erebot_EventHandler(
                 array($this, 'handleConnect'),
-                'ErebotEventConnect');
+                'Erebot_Event_Connect');
             $this->_connection->addEventHandler($handler);
         }
     }
 
-    public function handleConnect(iErebotEvent &$event)
+    public function handleConnect(Erebot_Interface_Event_Generic &$event)
     {
         $key = $this->parseString('key', '');
         $this->sendCommand('JOIN '.$this->_channel.
