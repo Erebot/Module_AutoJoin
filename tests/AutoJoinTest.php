@@ -31,7 +31,7 @@ extends ErebotModuleTestCase
             $this->_connection,
             '#foo'
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_MEMBERS);
+        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(1, count($this->_outputBuffer));
@@ -44,7 +44,7 @@ extends ErebotModuleTestCase
             $this->_connection,
             NULL
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_MEMBERS);
+        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(0, count($this->_outputBuffer));
@@ -65,7 +65,7 @@ extends ErebotModuleTestCase
             $this->_connection,
             '#foo'
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_MEMBERS);
+        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(1, count($this->_outputBuffer));
