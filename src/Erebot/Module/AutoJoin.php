@@ -34,6 +34,9 @@ extends Erebot_Module_Base
 
     public function handleConnect(Erebot_Interface_Event_Generic &$event)
     {
+        if ($this->_channel === NULL)
+            return;
+
         $key = $this->parseString('key', '');
         $this->sendCommand('JOIN '.$this->_channel.
             ($key != '' ? ' '.$key : ''));
