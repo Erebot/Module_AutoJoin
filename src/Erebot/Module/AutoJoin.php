@@ -19,7 +19,7 @@
 class   Erebot_Module_AutoJoin
 extends Erebot_Module_Base
 {
-    public function reload($flags)
+    public function _reload($flags)
     {
         if ($this->_channel === NULL)
             return;
@@ -31,6 +31,10 @@ extends Erebot_Module_Base
             );
             $this->_connection->addEventHandler($handler);
         }
+    }
+
+    protected function _unload()
+    {
     }
 
     public function handleConnect(Erebot_Interface_Event_Generic &$event)
