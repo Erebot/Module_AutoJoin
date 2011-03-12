@@ -27,11 +27,11 @@ extends ErebotModuleTestCase
 {
     public function testAutoJoin()
     {
-        $this->_module = new Erebot_Module_AutoJoin(
+        $this->_module = new Erebot_Module_AutoJoin('#foo');
+        $this->_module->reload(
             $this->_connection,
-            '#foo'
+            Erebot_Module_Base::RELOAD_ALL
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(1, count($this->_outputBuffer));
