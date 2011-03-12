@@ -36,18 +36,20 @@ extends ErebotModuleTestCase
         $this->_module->handleConnect($event);
         $this->assertSame(1, count($this->_outputBuffer));
         $this->assertSame("JOIN #foo", $this->_outputBuffer[0]);
+        $this->_module->unload();
     }
 
     public function testAutoJoinWithoutAnyChannel()
     {
-        $this->_module = new Erebot_Module_AutoJoin(
+        $this->_module = new Erebot_Module_AutoJoin(NULL);
+        $this->_module->reload(
             $this->_connection,
-            NULL
+            Erebot_Module_Base::RELOAD_ALL
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(0, count($this->_outputBuffer));
+        $this->_module->unload();
     }
 
     public function testPasswordedAutoJoin()
@@ -61,16 +63,16 @@ extends ErebotModuleTestCase
 
         // Now, go through the same sequence
         // but look for a different outcome.
-        $this->_module = new Erebot_Module_AutoJoin(
+        $this->_module = new Erebot_Module_AutoJoin('#foo');
+        $this->_module->reload(
             $this->_connection,
-            '#foo'
+            Erebot_Module_Base::RELOAD_ALL
         );
-        $this->_module->reload(Erebot_Module_Base::RELOAD_ALL);
         $event = new Erebot_Event_Connect($this->_connection);
         $this->_module->handleConnect($event);
         $this->assertSame(1, count($this->_outputBuffer));
         $this->assertSame("JOIN #foo password", $this->_outputBuffer[0]);
+        $this->_module->unload();
     }
-
 }
 
