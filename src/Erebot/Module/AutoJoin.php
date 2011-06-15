@@ -16,9 +16,15 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+/**
+ * \brief
+ *      A module which automatically joins some pre-configured
+ *      IRC channels upon connection.
+ */
 class   Erebot_Module_AutoJoin
 extends Erebot_Module_Base
 {
+    /// \copydoc Erebot_Module_Base::_reload()
     public function _reload($flags)
     {
         if ($this->_channel === NULL)
@@ -33,10 +39,22 @@ extends Erebot_Module_Base
         }
     }
 
+    /// \copydoc Erebot_Module_Base::_unload()
     protected function _unload()
     {
     }
 
+    /**
+     * Handles a connection to some IRC server.
+     * This method takes care of joining the IRC channels
+     * it was configured for in the configuration file.
+     *
+     * \param Erebot_Interface_Event_Event_Connect $event
+     *      Connection event.
+     *
+     * \return
+     *      This method does not return anything.
+     */
     public function handleConnect(Erebot_Interface_Event_Connect $event)
     {
         if ($this->_channel === NULL)
