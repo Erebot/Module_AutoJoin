@@ -32,8 +32,10 @@ extends Erebot_Module_Base
 
         if ($flags & self::RELOAD_HANDLERS) {
             $handler = new Erebot_EventHandler(
-                array($this, 'handleConnect'),
-                new Erebot_Event_Match_InstanceOf('Erebot_Interface_Event_Connect')
+                new Erebot_Callable(array($this, 'handleConnect')),
+                new Erebot_Event_Match_InstanceOf(
+                    'Erebot_Interface_Event_Connect'
+                )
             );
             $this->_connection->addEventHandler($handler);
         }
