@@ -57,7 +57,10 @@ extends Erebot_Module_Base
      * \return
      *      This method does not return anything.
      */
-    public function handleConnect(Erebot_Interface_Event_Connect $event)
+    public function handleConnect(
+        Erebot_Interface_EventHandler   $handler,
+        Erebot_Interface_Event_Connect  $event
+    )
     {
         if ($this->_channel === NULL)
             return;
