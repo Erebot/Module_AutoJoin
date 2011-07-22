@@ -33,7 +33,7 @@ extends ErebotModuleTestCase
             Erebot_Module_Base::RELOAD_ALL
         );
         $event = new Erebot_Event_Connect($this->_connection);
-        $this->_module->handleConnect($event);
+        $this->_module->handleConnect($this->_eventHandler, $event);
         $this->assertSame(1, count($this->_outputBuffer));
         $this->assertSame("JOIN #foo", $this->_outputBuffer[0]);
         $this->_module->unload();
@@ -47,7 +47,7 @@ extends ErebotModuleTestCase
             Erebot_Module_Base::RELOAD_ALL
         );
         $event = new Erebot_Event_Connect($this->_connection);
-        $this->_module->handleConnect($event);
+        $this->_module->handleConnect($this->_eventHandler, $event);
         $this->assertSame(0, count($this->_outputBuffer));
         $this->_module->unload();
     }
@@ -69,7 +69,7 @@ extends ErebotModuleTestCase
             Erebot_Module_Base::RELOAD_ALL
         );
         $event = new Erebot_Event_Connect($this->_connection);
-        $this->_module->handleConnect($event);
+        $this->_module->handleConnect($this->_eventHandler, $event);
         $this->assertSame(1, count($this->_outputBuffer));
         $this->assertSame("JOIN #foo password", $this->_outputBuffer[0]);
         $this->_module->unload();
