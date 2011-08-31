@@ -66,8 +66,10 @@ extends Erebot_Module_Base
             return;
 
         $key = $this->parseString('key', '');
-        $this->sendCommand('JOIN '.$this->_channel.
-            ($key != '' ? ' '.$key : ''));
+        $this->sendCommand(
+            'JOIN '.$this->_channel.
+            ($key != '' ? ' '.$key : '')
+        );
     }
 }
 
