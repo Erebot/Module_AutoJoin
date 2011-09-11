@@ -51,6 +51,8 @@ extends Erebot_Module_Base
      * This method takes care of joining the IRC channels
      * it was configured for in the configuration file.
      *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
      * \param Erebot_Interface_Event_Event_Connect $event
      *      Connection event.
      *
