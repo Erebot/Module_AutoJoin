@@ -24,7 +24,18 @@
 class   Erebot_Module_AutoJoin
 extends Erebot_Module_Base
 {
-    /// \copydoc Erebot_Module_Base::_reload()
+    /**
+     * This method is called whenever the module is (re)loaded.
+     *
+     * \param int $flags
+     *      A bitwise OR of the Erebot_Module_Base::RELOAD_*
+     *      constants. Your method should take proper actions
+     *      depending on the value of those flags.
+     *
+     * \note
+     *      See the documentation on individual RELOAD_*
+     *      constants for a list of possible values.
+     */
     public function _reload($flags)
     {
         if ($this->_channel === NULL)
@@ -51,13 +62,16 @@ extends Erebot_Module_Base
      * This method takes care of joining the IRC channels
      * it was configured for in the configuration file.
      *
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * \param Erebot_Interface_EventHandler $handler
+     *      Handler that triggered this event.
      *
      * \param Erebot_Interface_Event_Event_Connect $event
      *      Connection event.
      *
      * \return
      *      This method does not return anything.
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function handleConnect(
         Erebot_Interface_EventHandler   $handler,
