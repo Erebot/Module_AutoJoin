@@ -16,9 +16,9 @@ Contents:
 
 Current status on http://travis-ci.org/:
 
-..  image:: https://secure.travis-ci.org/fpoirotte/Erebot_Module_AutoJoin.png
+..  image:: https://secure.travis-ci.org/Erebot/Erebot_Module_AutoJoin.png
     :alt: unknown
-    :target: http://travis-ci.org/#!/fpoirotte/Erebot_Module_AutoJoin/
+    :target: http://travis-ci.org/#!/Erebot/Erebot_Module_AutoJoin/
 
 
 ..  _`Erebot`:
