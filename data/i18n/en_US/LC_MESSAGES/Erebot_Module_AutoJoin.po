@@ -1,21 +1,23 @@
+# SOME DESCRIPTIVE TITLE.
+# This file is put in the public domain.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Erebot_Module_AutoJoin 0.5.0\n"
-"Report-Msgid-Bugs-To: i18n@erebot.net\n"
-"POT-Creation-Date: 2012-05-28 12:46+0200\n"
-"PO-Revision-Date: 2011-04-16 12:24+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: en_US\n"
+"Project-Id-Version: Erebot\n"
+"Report-Msgid-Bugs-To: https://github.com/fpoirotte/Erebot/issues\n"
+"POT-Creation-Date: 2012-05-28 12:48+0200\n"
+"PO-Revision-Date: 2012-05-28 10:53+0000\n"
+"Last-Translator: François Poirotte <clicky@erebot.net>\n"
+"Language-Team: English (United States) <i18n.en_US@erebot.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
 # File: src/Erebot/Module/AutoJoin.php, line: 93
 msgid ""
 "This module does not provide any command, but instructs the bot to join "
 "certain channels automatically upon connecting to an IRC server."
-msgstr ""
-"This module does not provide any command, but instructs the bot to join "
-"certain channels automatically upon connecting to an IRC server."
+msgstr "This module does not provide any command, but instructs the bot to join certain channels automatically upon connecting to an IRC server."
