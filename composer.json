@@ -1,5 +1,5 @@
 {
-    "name": "erebot/erebot-module-autojoin",
+    "name": "erebot/autojoin-module",
     "description": "Erebot module to automatically join some channel upon connection",
     "keywords": ["Erebot", "IRC", "bot", "module"],
     "homepage": "https://github.com/Erebot/Erebot_Module_AutoJoin",
