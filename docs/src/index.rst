@@ -14,12 +14,11 @@ Contents:
     Configuration
     Usage
 
-Current status on http://travis-ci.org/:
+Current status on http://travis-ci.org/: |travis|
 
-..  image:: https://secure.travis-ci.org/Erebot/Erebot_Module_AutoJoin.png
-    :alt: unknown
-    :target: http://travis-ci.org/#!/Erebot/Erebot_Module_AutoJoin/
-
+..  |travis| image:: https://secure.travis-ci.org/Erebot/Erebot_Module_AutoJoin.png
+    :alt: UNKNOWN
+    :target: https://travis-ci.org/Erebot/Erebot_Module_AutoJoin/
 
 ..  _`Erebot`:
     https://www.erebot.net/
