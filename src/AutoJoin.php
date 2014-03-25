@@ -16,20 +16,20 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+namespace Erebot\Module;
+
 /**
  * \brief
  *      A module which automatically joins some pre-configured
  *      IRC channels upon connection.
  */
-class       Erebot_Module_AutoJoin
-extends     Erebot_Module_Base
-implements  Erebot_Interface_HelpEnabled
+class AutoJoin extends \Erebot\Module\Base implements \Erebot\Interfaces\HelpEnabled
 {
     /**
      * This method is called whenever the module is (re)loaded.
      *
      * \param int $flags
-     *      A bitwise OR of the Erebot_Module_Base::RELOAD_*
+     *      A bitwise OR of the Erebot::Module::Base::RELOAD_*
      *      constants. Your method should take proper actions
      *      depending on the value of those flags.
      *
@@ -37,41 +37,33 @@ implements  Erebot_Interface_HelpEnabled
      *      See the documentation on individual RELOAD_*
      *      constants for a list of possible values.
      */
-    public function _reload($flags)
+    public function reload($flags)
     {
-        if ($this->_channel === NULL)
+        if ($this->channel === null) {
             return;
+        }
 
         if ($flags & self::RELOAD_HANDLERS) {
-            $handler = new Erebot_EventHandler(
-                new Erebot_Callable(array($this, 'handleConnect')),
-                new Erebot_Event_Match_InstanceOf(
-                    'Erebot_Interface_Event_Connect'
+            $handler = new \Erebot\EventHandler(
+                new \Erebot\CallableWrapper(array($this, 'handleConnect')),
+                new \Erebot\Event\Match\Type(
+                    '\\Erebot\\Interfaces\\Event\\Connect'
                 )
             );
-            $this->_connection->addEventHandler($handler);
+            $this->connection->addEventHandler($handler);
         }
     }
 
-    /// \copydoc Erebot_Module_Base::_unload()
-    protected function _unload()
-    {
-    }
-
-    /**
-     * \copydoc Erebot_Interface_HelpEnabled::getHelp()
-     */
     public function getHelp(
-        Erebot_Interface_Event_Base_TextMessage $event,
-        Erebot_Interface_TextWrapper            $words
-    )
-    {
-        if ($event instanceof Erebot_Interface_Event_Base_Private) {
+        \Erebot\Interfaces\Event\Base\TextMessage $event,
+        \Erebot\Interfaces\TextWrapper $words
+    ) {
+        if ($event instanceof \Erebot\Interfaces\Event\Base\PrivateMessage) {
             $target = $event->getSource();
-            $chan   = NULL;
-        }
-        else
+            $chan   = null;
+        } else {
             $target = $chan = $event->getChan();
+        }
 
         $fmt        = $this->getFormatter($chan);
         $moduleName = strtolower(get_class());
@@ -84,7 +76,7 @@ implements  Erebot_Interface_HelpEnabled
                 "upon connecting to an IRC server."
             );
             $this->sendMessage($target, $msg);
-            return TRUE;
+            return true;
         }
     }
 
@@ -93,10 +85,10 @@ implements  Erebot_Interface_HelpEnabled
      * This method takes care of joining the IRC channels
      * it was configured for in the configuration file.
      *
-     * \param Erebot_Interface_EventHandler $handler
+     * \param Erebot::Interfaces::EventHandler $handler
      *      Handler that triggered this event.
      *
-     * \param Erebot_Interface_Event_Event_Connect $event
+     * \param Erebot::Interfaces::Event::Connect $event
      *      Connection event.
      *
      * \return
@@ -105,18 +97,17 @@ implements  Erebot_Interface_HelpEnabled
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function handleConnect(
-        Erebot_Interface_EventHandler   $handler,
-        Erebot_Interface_Event_Connect  $event
-    )
-    {
-        if ($this->_channel === NULL)
+        \Erebot\Interfaces\EventHandler $handler,
+        \Erebot\Interfaces\Event\Connect $event
+    ) {
+        if ($this->channel === null) {
             return;
+        }
 
         $key = $this->parseString('key', '');
         $this->sendCommand(
-            'JOIN '.$this->_channel.
+            'JOIN '.$this->channel.
             ($key != '' ? ' '.$key : '')
         );
     }
 }
-
