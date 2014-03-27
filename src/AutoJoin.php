@@ -45,7 +45,7 @@ class AutoJoin extends \Erebot\Module\Base implements \Erebot\Interfaces\HelpEna
 
         if ($flags & self::RELOAD_HANDLERS) {
             $handler = new \Erebot\EventHandler(
-                new \Erebot\CallableWrapper(array($this, 'handleConnect')),
+                \Erebot\CallableWrapper::wrap(array($this, 'handleConnect')),
                 new \Erebot\Event\Match\Type(
                     '\\Erebot\\Interfaces\\Event\\Connect'
                 )
