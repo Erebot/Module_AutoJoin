@@ -19,6 +19,13 @@
 class   AutoJoinTest
 extends Erebot_Testenv_Module_TestCase
 {
+    public function setUp()
+    {
+        \Erebot\CallableWrapper::initialize();
+        class_exists('\\Erebot\\Module\\callable');
+        parent::setUp();
+    }
+
     public function _getConnectMock()
     {
         $event = $this->getMock(
